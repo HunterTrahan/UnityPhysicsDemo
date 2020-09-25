@@ -13,8 +13,6 @@ public class PlayerMovementBehavior : MonoBehaviour
     public float turnRate = 1.0f;
     public float pushPower = 2.0f;
 
-    public bool tankControls = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,20 +25,10 @@ public class PlayerMovementBehavior : MonoBehaviour
     {
         Vector3 desiredMovement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
 
-        if (tankControls)
-        {
-            //Tank movement
-            _controller.SimpleMove(transform.forward * desiredMovement.z * speed);
-            transform.Rotate(transform.up, desiredMovement.x * turnRate);
-        }
-        else
-        {
-            //World-based movement
-            _controller.SimpleMove(desiredMovement);
-            if (desiredMovement.magnitude > 0)
-                transform.forward = desiredMovement.normalized;
-        }
-        //Animate based on movement
+        //Tank movement
+        _controller.SimpleMove(transform.forward * desiredMovement.z * speed);
+        transform.Rotate(transform.up, desiredMovement.x * turnRate);
+
         _animator.SetFloat("Speed", desiredMovement.z * speed);
     }
 
