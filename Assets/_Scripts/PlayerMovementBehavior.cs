@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
@@ -30,6 +31,16 @@ public class PlayerMovementBehavior : MonoBehaviour
         transform.Rotate(transform.up, desiredMovement.x * turnRate);
 
         _animator.SetFloat("Speed", desiredMovement.z * speed);
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("MainGame");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
