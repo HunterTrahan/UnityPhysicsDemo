@@ -1,3 +1,7 @@
+## Introduction
+A simple obstacle course used to demonstrate physics inside Unity
+
+
 ## How to play
 WASD - Handles player movement and camera control
 
